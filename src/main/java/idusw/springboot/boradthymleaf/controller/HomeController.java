@@ -24,4 +24,8 @@ public class HomeController {
     public String goCard() {
         return "/sb-admin-2/cards";
     }
+
+    @GetMapping("404")
+    public String go404() {return "/sb-admin-2/404";
+    }
 }
