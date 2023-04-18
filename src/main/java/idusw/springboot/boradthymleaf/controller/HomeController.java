@@ -28,4 +28,7 @@ public class HomeController {
     @GetMapping("404")
     public String go404() {return "/sb-admin-2/404";
     }
+    @GetMapping("blank")
+    public String goblank() {return "/sb-admin-2/blank";
+    }
 }
