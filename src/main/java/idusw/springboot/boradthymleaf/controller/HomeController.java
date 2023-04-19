@@ -26,9 +26,50 @@ public class HomeController {
     }
 
     @GetMapping("404")
-    public String go404() {return "/sb-admin-2/404";
+    public String goerror() {
+        return "/sb-admin-2/404";
     }
     @GetMapping("blank")
-    public String goblank() {return "/sb-admin-2/blank";
+    public String goblank() {
+        return "/sb-admin-2/blank";
     }
+
+    @GetMapping("charts")
+    public String gocharts() {
+        return "/sb-admin-2/charts";
+    }
+    @GetMapping("forgot-password")
+    public String gopassword() {
+        return "/sb-admin-2/forgot-password";
+    }
+    @GetMapping("login")
+    public String gologin() {
+        return "/sb-admin-2/login";
+    }
+    @GetMapping("register")
+    public String goregister() {
+        return "/sb-admin-2/register";
+    }
+    @GetMapping("tables")
+    public String gotables() {
+        return "/sb-admin-2/tables";
+    }
+
+    @GetMapping("utilities-animation")
+    public String goanimation() {
+        return "/sb-admin-2/utilities-animation";
+    }
+    @GetMapping("utilities-border")
+    public String goborder() {
+        return "/sb-admin-2/utilities-border";
+    }
+    @GetMapping("utilities-color")
+    public String gocolor() {
+        return "/sb-admin-2/utilities-color";
+    }
+    @GetMapping("utilities-other")
+    public String goother() {
+        return "/sb-admin-2/utilities-other";
+    }
+
 }
