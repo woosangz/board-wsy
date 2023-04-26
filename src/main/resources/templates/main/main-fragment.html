@@ -177,7 +177,7 @@
         </form>
 
         <!-- Topbar Navbar -->
-        <ul class="navbar-nav ml-auto">
+        <div class="navbar-nav ml-auto">
 
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
             <li class="nav-item dropdown no-arrow d-sm-none">
@@ -323,6 +323,7 @@
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
+            <div th:if="${session.mb != null}">
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -353,8 +354,8 @@
                 </div>
             </li>
 
-        </ul>
-
+        </div>
+        </div>
     </nav>
 </div>
 
