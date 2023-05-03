@@ -63,10 +63,12 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="/members/forgot">Forgot Password?</a>
+                                <form class="user" th:action="@{'/members/' + ${member.seq}}" th:object="${member}" th:method="delete">
+                                    <input type="submit" value="탈퇴" />
+                                </form>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="/members/login">Already have an account? Login!</a>
+                                <a class="small" href="/">Go Home</a>
                             </div>
                         </div>
                     </div>

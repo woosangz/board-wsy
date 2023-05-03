@@ -5,6 +5,7 @@ import idusw.springboot.boradthymleaf.domain.Memo;
 import idusw.springboot.boradthymleaf.repository.MemberRepository;
 import idusw.springboot.boradthymleaf.service.MemberService;
 import idusw.springboot.boradthymleaf.service.MemoService;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +30,7 @@ class Borad3BApplicationTests {
             System.out.println("등록 실패");
     }
     @Test
+    @Transactional //연속적으로 함께 처리해야할 작업의 단위
     void readMember(){
         Member member = Member.builder()
                 .seq(52L)

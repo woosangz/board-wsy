@@ -175,7 +175,7 @@
                 </div>
             </div>
         </form>
-
+        <div th:if="${session.mb != null}">
         <!-- Topbar Navbar -->
         <div class="navbar-nav ml-auto">
 
@@ -355,6 +355,21 @@
             </li>
 
         </div>
+        </div>
+        </div>
+        <div th:if="${session.mb == null}">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/members/login">
+                        <span>Login</span>
+                        <i class="fas fa-sign-in-alt"></i></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/members/register">
+                        <span>Register</span>
+                        <i class="far fa-registered"></i></a>
+                </li>
+            </ul>
         </div>
     </nav>
 </div>
