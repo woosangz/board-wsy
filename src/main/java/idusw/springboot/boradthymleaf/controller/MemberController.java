@@ -2,6 +2,9 @@ package idusw.springboot.boradthymleaf.controller;
 
 import idusw.springboot.boradthymleaf.domain.Member;
 import idusw.springboot.boradthymleaf.domain.Memo;
+import idusw.springboot.boradthymleaf.domain.PageRequestDTO;
+import idusw.springboot.boradthymleaf.domain.PageResultDTO;
+import idusw.springboot.boradthymleaf.entity.MemberEntity;
 import idusw.springboot.boradthymleaf.service.MemberService;
 import idusw.springboot.boradthymleaf.service.MemoService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +23,8 @@ public class MemberController {
         this.memberService = memberService;
     }
     HttpSession session = null;
-    @GetMapping("/login-form")
+
+    @GetMapping("/login")
     public String getLoginform(Model model) {
         model.addAttribute("member", Member.builder().build()); // email / pw 전달을 위한 객체
         return "/members/login"; // view : template engine - thymeleaf .html
@@ -34,7 +38,7 @@ public class MemberController {
             return "redirect:/";
         }
         else
-            return "/main/error";
+            return "/errors/404";
     }
     @GetMapping("/logout")
     public String logoutMember() {
@@ -51,7 +55,8 @@ public class MemberController {
         else
             return "/errors/404";
     }
-    @GetMapping("/register-form")
+
+    @GetMapping("/register")
     public String getRegisterForm(Model model) { // form 요청 -> view (template engine)
         model.addAttribute("member", Member.builder().build());
         return "/members/register";
@@ -93,12 +98,15 @@ public class MemberController {
         else
             return "/errors/404";
     }
-    @GetMapping("/list")
-    public String Memberslist2(Model model) {
-        List<Member> result = null;
-        if((result = memberService.readList()) != null) {
-            model.addAttribute("list", result);
-            return "/members/list2";
+    @GetMapping("/list/{pn}/{size}")
+    public String listMemberPagination(@PathVariable("pn") int pn, @PathVariable("size") int size, Model model) {
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder().page(pn).size(size).build();
+        PageResultDTO<Member, MemberEntity> resultDTO = memberService.getList(pageRequestDTO);
+
+        if(resultDTO != null){
+            model.addAttribute("list", resultDTO.getDtolist());
+            model.addAttribute("result",resultDTO);
+            return "/members/list";
         }
         else
             return "/errors/404";
